@@ -7,3 +7,9 @@
   from = "/builder"
   to   = "/builder.html"
   status = 200
+
+# SPA fallback: serve index for all non-file routes
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
