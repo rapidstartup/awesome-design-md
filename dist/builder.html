@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentix Designer</title>
+  <script type="module" crossorigin src="/assets/builder-DSS4lxAh.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/variables-DlCfiovU.js">
+  <link rel="stylesheet" crossorigin href="/assets/builder-BYx4sucu.css">
+</head>
+<body>
+
+  <!-- ── Auth wall ─────────────────────────────────────────────────────────── -->
+  <div id="auth-wall">
+    <div class="auth-card">
+      <img src="/agentix.png" alt="Agentix" class="auth-logo-img">
+      <div class="auth-product">Designer</div>
+      <p class="auth-sub">Sign in with your Agentix account to continue</p>
+
+      <form id="login-form">
+        <input type="email"    id="login-email"    placeholder="Email"    required autocomplete="email">
+        <input type="password" id="login-password" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" id="login-btn">Sign in</button>
+        <p id="auth-error"></p>
+      </form>
+
+      <p class="auth-register">
+        Don't have an account?
+        <a href="https://app.agentixsuite.com" target="_blank" rel="noopener">
+          Create one at app.agentixsuite.com →
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ── Builder app ────────────────────────────────────────────────────────── -->
+  <div id="app" class="hidden">
+
+    <header id="builder-header">
+      <a href="/" class="header-back" title="Back to browser">← Browser</a>
+      <div class="header-brand">
+        <img src="/agentix.png" alt="Agentix" class="header-logo">
+        <span>Designer</span>
+      </div>
+
+      <input type="text" id="design-name" placeholder="Untitled Design" autocomplete="off" spellcheck="false">
+
+      <div class="header-right">
+        <label class="header-label">Base</label>
+        <select id="base-select"></select>
+        <button id="btn-refresh" class="btn-ghost" title="Full preview refresh">↺ Refresh</button>
+        <button id="btn-save" class="btn-primary">Save</button>
+        <button id="btn-signout" class="btn-ghost">Sign out</button>
+      </div>
+    </header>
+
+    <div id="builder-main">
+
+      <aside id="controls-panel">
+        <div id="saved-section">
+          <div class="panel-heading">
+            My Designs
+            <button id="btn-new" class="btn-tiny" title="New design">+ New</button>
+          </div>
+          <div id="saved-list"></div>
+        </div>
+        <div class="panel-divider"></div>
+        <div id="controls-list"></div>
+      </aside>
+
+      <div id="preview-panel">
+        <iframe id="builder-preview" title="Live preview" frameborder="0"></iframe>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
