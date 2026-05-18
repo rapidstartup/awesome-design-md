@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/copy-design-md.mjs",
-    "generate-previews": "node scripts/generate-design-previews.mjs",
+    "generate-previews": "node scripts/build-rich-previews.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
