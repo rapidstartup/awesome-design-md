@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System Preview: Renault (Dark)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #ffed00;
+  --primary-deep: #e6d200;
+  --on-primary: #000000;
+  --ink: #000000;
+  --body: #222222;
+  --charcoal: #333333;
+  --mute: #666666;
+  --ash: #8a8a8a;
+  --stone: #c4c4c4;
+  --on-dark: #ffffff;
+  --canvas: #ffffff;
+  --surface-soft: #f7f7f7;
+  --surface-card: #ffffff;
+  --surface-dark: #000000;
+  --surface-deep: #111111;
+  --hairline: #f2f2f2;
+  --hairline-strong: #000000;
+  --badge-new: #ffed00;
+  --link: #0000ee;
+  --error: #be6464;
+  --warning: #f0ad4e;
+  --success: #8dc572;
+  --info: #337ab7;
+  --preview-body-bg: var(--canvas-dark, var(--ink-deep, var(--ink, var(--surface-aubergine, #0c0c0c))));
+  --preview-body-color: var(--body, var(--on-dark, var(--content-text-dark, var(--text-primary, #e8e8e8))));
+  --preview-muted: var(--muted, var(--muted-strong, var(--stone, var(--ink-mute, #9ca3af))));
+  --preview-primary-bg: var(--primary, var(--accent-indigo, #3b82f6));
+  --preview-primary-fg: var(--on-primary, #ffffff);
+  --preview-surface: var(--surface-card-dark, var(--surface-elevated-dark, var(--surface-strong-dark, var(--dark-slate, #1e293b))));
+  --preview-border: var(--hairline-on-dark, var(--hairline, var(--border-strong, #334155)));
+}
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--preview-body-bg);
+    color: var(--preview-body-color);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px;
+    background: var(--preview-body-bg);
+    border-bottom: 1px solid var(--preview-border);
+  }
+  .nav-brand { font-size: 15px; font-weight: 600; text-decoration: none; color: inherit; }
+  .nav-links { display: flex; gap: 18px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--preview-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--preview-body-color); }
+  .nav-cta {
+    display: inline-block;
+    background: var(--preview-primary-bg);
+    color: var(--preview-primary-fg);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .hero { padding: 56px 24px; text-align: center; max-width: 720px; margin: 0 auto; }
+  .hero h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 600; line-height: 1.15; margin-bottom: 12px; }
+  .hero h1 span { color: var(--preview-primary-bg); }
+  .hero p { font-size: 16px; color: var(--preview-muted); margin-bottom: 24px; }
+  .hero-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--preview-primary-bg);
+    color: var(--preview-primary-fg);
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-secondary {
+    display: inline-block;
+    background: var(--preview-surface);
+    color: var(--preview-body-color);
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--preview-border);
+  }
+  .section { padding: 40px 24px; max-width: 1000px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--preview-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .section-title { font-size: 26px; font-weight: 600; line-height: 1.2; margin-bottom: 20px; }
+  .section-divider { border: none; border-top: 1px solid var(--preview-border); margin: 0; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .color-swatch { border-radius: 10px; overflow: hidden; border: 1px solid var(--preview-border); }
+  .color-swatch-block { height: 52px; }
+  .color-swatch-info { padding: 8px 10px; background: var(--preview-surface); }
+  .color-swatch-name { font-size: 11px; font-weight: 600; }
+  .color-swatch-hex { font-size: 10px; color: var(--preview-muted); font-family: ui-monospace, monospace; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .card {
+    background: var(--preview-surface);
+    border: 1px solid var(--preview-border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: var(--preview-muted); }
+  .button-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .form-group { margin-bottom: 14px; max-width: 380px; }
+  .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .form-input {
+    width: 100%;
+    background: var(--preview-body-bg);
+    color: var(--preview-body-color);
+    border: 1px solid var(--preview-border);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+  }
+  .form-input:focus { border-color: var(--preview-primary-bg); box-shadow: 0 0 0 2px color-mix(in srgb, var(--preview-primary-bg) 25%, transparent); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="#">awesome-design-md</a>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#type">Type</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#cards">Cards</a></li>
+  </ul>
+  <a class="nav-cta" href="#">Primary</a>
+</nav>
+
+<section class="hero">
+  <h1>Design tokens<br><span>Renault</span></h1>
+  <p>Generated from DESIGN.md color roles — fork preview catalog.</p>
+  <div class="hero-buttons">
+    <a class="btn-primary" href="#">Primary action</a>
+    <a class="btn-secondary" href="#">Secondary</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="colors">
+  <div class="section-label">Colors</div>
+  <h2 class="section-title">Palette from DESIGN.md</h2>
+  <div class="color-grid">
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffed00"></div><div class="color-swatch-info"><div class="color-swatch-name">primary</div><div class="color-swatch-hex">#ffed00</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#e6d200"></div><div class="color-swatch-info"><div class="color-swatch-name">primary-deep</div><div class="color-swatch-hex">#e6d200</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#000000"></div><div class="color-swatch-info"><div class="color-swatch-name">on-primary</div><div class="color-swatch-hex">#000000</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#000000"></div><div class="color-swatch-info"><div class="color-swatch-name">ink</div><div class="color-swatch-hex">#000000</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#222222"></div><div class="color-swatch-info"><div class="color-swatch-name">body</div><div class="color-swatch-hex">#222222</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#333333"></div><div class="color-swatch-info"><div class="color-swatch-name">charcoal</div><div class="color-swatch-hex">#333333</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#666666"></div><div class="color-swatch-info"><div class="color-swatch-name">mute</div><div class="color-swatch-hex">#666666</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#8a8a8a"></div><div class="color-swatch-info"><div class="color-swatch-name">ash</div><div class="color-swatch-hex">#8a8a8a</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#c4c4c4"></div><div class="color-swatch-info"><div class="color-swatch-name">stone</div><div class="color-swatch-hex">#c4c4c4</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffffff"></div><div class="color-swatch-info"><div class="color-swatch-name">on-dark</div><div class="color-swatch-hex">#ffffff</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffffff"></div><div class="color-swatch-info"><div class="color-swatch-name">canvas</div><div class="color-swatch-hex">#ffffff</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#f7f7f7"></div><div class="color-swatch-info"><div class="color-swatch-name">surface-soft</div><div class="color-swatch-hex">#f7f7f7</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffffff"></div><div class="color-swatch-info"><div class="color-swatch-name">surface-card</div><div class="color-swatch-hex">#ffffff</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#000000"></div><div class="color-swatch-info"><div class="color-swatch-name">surface-dark</div><div class="color-swatch-hex">#000000</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#111111"></div><div class="color-swatch-info"><div class="color-swatch-name">surface-deep</div><div class="color-swatch-hex">#111111</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#f2f2f2"></div><div class="color-swatch-info"><div class="color-swatch-name">hairline</div><div class="color-swatch-hex">#f2f2f2</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#000000"></div><div class="color-swatch-info"><div class="color-swatch-name">hairline-strong</div><div class="color-swatch-hex">#000000</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffed00"></div><div class="color-swatch-info"><div class="color-swatch-name">badge-new</div><div class="color-swatch-hex">#ffed00</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#0000ee"></div><div class="color-swatch-info"><div class="color-swatch-name">link</div><div class="color-swatch-hex">#0000ee</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#be6464"></div><div class="color-swatch-info"><div class="color-swatch-name">error</div><div class="color-swatch-hex">#be6464</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#f0ad4e"></div><div class="color-swatch-info"><div class="color-swatch-name">warning</div><div class="color-swatch-hex">#f0ad4e</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#8dc572"></div><div class="color-swatch-info"><div class="color-swatch-name">success</div><div class="color-swatch-hex">#8dc572</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#337ab7"></div><div class="color-swatch-info"><div class="color-swatch-name">info</div><div class="color-swatch-hex">#337ab7</div></div></div></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="type">
+  <div class="section-label">Typography</div>
+  <h2 class="section-title">Scale (Inter stand-in)</h2>
+  <p style="font-size:28px;font-weight:600;margin-bottom:12px;">Display sample</p>
+  <p style="font-size:18px;font-weight:500;margin-bottom:8px;">Section heading</p>
+  <p style="color:var(--preview-muted);max-width:560px;">Body — tokens above drive backgrounds, borders, and accents; proprietary fonts from DESIGN.md load on the live brand.</p>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="buttons">
+  <div class="section-label">Buttons</div>
+  <h2 class="section-title">Actions</h2>
+  <div class="button-row">
+    <a class="btn-primary" href="#">Continue</a>
+    <a class="btn-secondary" href="#">Cancel</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="cards">
+  <div class="section-label">Cards</div>
+  <h2 class="section-title">Surfaces</h2>
+  <div class="card-grid">
+    <div class="card"><h3>Module A</h3><p>Surface uses semantic elevation from token roles.</p></div>
+    <div class="card"><h3>Module B</h3><p>Hairlines and muted copy reference DESIGN.md.</p></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="forms">
+  <div class="section-label">Forms</div>
+  <h2 class="section-title">Inputs</h2>
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input class="form-input" type="email" placeholder="you@example.com">
+  </div>
+</section>
+
+</body>
+</html>

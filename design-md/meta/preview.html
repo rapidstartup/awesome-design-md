@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System Preview: Meta (Light)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0064e0;
+  --primary-deep: #0457cb;
+  --primary-soft: #0091ff;
+  --on-primary: #ffffff;
+  --ink-button: #000000;
+  --on-ink-button: #ffffff;
+  --fb-blue: #1876f2;
+  --meta-link: #385898;
+  --oculus-purple: #a121ce;
+  --success: #31a24c;
+  --success-bg: #24e400;
+  --attention: #f2a918;
+  --warning: #f7b928;
+  --warning-bg: #ffe200;
+  --critical: #e41e3f;
+  --critical-strong: #f0284a;
+  --canvas: #ffffff;
+  --surface-soft: #f1f4f7;
+  --ink-deep: #0a1317;
+  --ink: #1c1e21;
+  --charcoal: #444950;
+  --slate: #4b4c4f;
+  --steel: #5d6c7b;
+  --stone: #8595a4;
+  --hairline: #ced0d4;
+  --hairline-soft: #dee3e9;
+  --disabled-text: #bcc0c4;
+  --preview-body-bg: var(--canvas, var(--canvas-light, var(--canvas-cream, var(--surface-soft, #ffffff))));
+  --preview-body-color: var(--body-on-light, var(--ink, var(--body, var(--text-primary, #1a1a1a))));
+  --preview-muted: var(--muted, var(--stone, var(--charcoal, var(--ink-mute, #6b7280))));
+  --preview-primary-bg: var(--primary, var(--accent-indigo, #3b82f6));
+  --preview-primary-fg: var(--on-primary, #ffffff);
+  --preview-surface: var(--surface-soft-light, var(--surface-soft, var(--surface-elev, var(--gray-surface, #f4f4f5))));
+  --preview-border: var(--hairline, var(--hairline-on-light, var(--border-default, #e5e7eb)));
+}
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--preview-body-bg);
+    color: var(--preview-body-color);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px;
+    background: var(--preview-body-bg);
+    border-bottom: 1px solid var(--preview-border);
+  }
+  .nav-brand { font-size: 15px; font-weight: 600; text-decoration: none; color: inherit; }
+  .nav-links { display: flex; gap: 18px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--preview-muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--preview-body-color); }
+  .nav-cta {
+    display: inline-block;
+    background: var(--preview-primary-bg);
+    color: var(--preview-primary-fg);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .hero { padding: 56px 24px; text-align: center; max-width: 720px; margin: 0 auto; }
+  .hero h1 { font-size: clamp(28px, 5vw, 44px); font-weight: 600; line-height: 1.15; margin-bottom: 12px; }
+  .hero h1 span { color: var(--preview-primary-bg); }
+  .hero p { font-size: 16px; color: var(--preview-muted); margin-bottom: 24px; }
+  .hero-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    background: var(--preview-primary-bg);
+    color: var(--preview-primary-fg);
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-secondary {
+    display: inline-block;
+    background: var(--preview-surface);
+    color: var(--preview-body-color);
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--preview-border);
+  }
+  .section { padding: 40px 24px; max-width: 1000px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--preview-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .section-title { font-size: 26px; font-weight: 600; line-height: 1.2; margin-bottom: 20px; }
+  .section-divider { border: none; border-top: 1px solid var(--preview-border); margin: 0; }
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .color-swatch { border-radius: 10px; overflow: hidden; border: 1px solid var(--preview-border); }
+  .color-swatch-block { height: 52px; }
+  .color-swatch-info { padding: 8px 10px; background: var(--preview-surface); }
+  .color-swatch-name { font-size: 11px; font-weight: 600; }
+  .color-swatch-hex { font-size: 10px; color: var(--preview-muted); font-family: ui-monospace, monospace; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .card {
+    background: var(--preview-surface);
+    border: 1px solid var(--preview-border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: var(--preview-muted); }
+  .button-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .form-group { margin-bottom: 14px; max-width: 380px; }
+  .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .form-input {
+    width: 100%;
+    background: var(--preview-body-bg);
+    color: var(--preview-body-color);
+    border: 1px solid var(--preview-border);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+  }
+  .form-input:focus { border-color: var(--preview-primary-bg); box-shadow: 0 0 0 2px color-mix(in srgb, var(--preview-primary-bg) 25%, transparent); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-brand" href="#">awesome-design-md</a>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#type">Type</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#cards">Cards</a></li>
+  </ul>
+  <a class="nav-cta" href="#">Primary</a>
+</nav>
+
+<section class="hero">
+  <h1>Design tokens<br><span>Meta</span></h1>
+  <p>Generated from DESIGN.md color roles — fork preview catalog.</p>
+  <div class="hero-buttons">
+    <a class="btn-primary" href="#">Primary action</a>
+    <a class="btn-secondary" href="#">Secondary</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="colors">
+  <div class="section-label">Colors</div>
+  <h2 class="section-title">Palette from DESIGN.md</h2>
+  <div class="color-grid">
+<div class="color-swatch"><div class="color-swatch-block" style="background:#0064e0"></div><div class="color-swatch-info"><div class="color-swatch-name">primary</div><div class="color-swatch-hex">#0064e0</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#0457cb"></div><div class="color-swatch-info"><div class="color-swatch-name">primary-deep</div><div class="color-swatch-hex">#0457cb</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#0091ff"></div><div class="color-swatch-info"><div class="color-swatch-name">primary-soft</div><div class="color-swatch-hex">#0091ff</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffffff"></div><div class="color-swatch-info"><div class="color-swatch-name">on-primary</div><div class="color-swatch-hex">#ffffff</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#000000"></div><div class="color-swatch-info"><div class="color-swatch-name">ink-button</div><div class="color-swatch-hex">#000000</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffffff"></div><div class="color-swatch-info"><div class="color-swatch-name">on-ink-button</div><div class="color-swatch-hex">#ffffff</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#1876f2"></div><div class="color-swatch-info"><div class="color-swatch-name">fb-blue</div><div class="color-swatch-hex">#1876f2</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#385898"></div><div class="color-swatch-info"><div class="color-swatch-name">meta-link</div><div class="color-swatch-hex">#385898</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#a121ce"></div><div class="color-swatch-info"><div class="color-swatch-name">oculus-purple</div><div class="color-swatch-hex">#a121ce</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#31a24c"></div><div class="color-swatch-info"><div class="color-swatch-name">success</div><div class="color-swatch-hex">#31a24c</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#24e400"></div><div class="color-swatch-info"><div class="color-swatch-name">success-bg</div><div class="color-swatch-hex">#24e400</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#f2a918"></div><div class="color-swatch-info"><div class="color-swatch-name">attention</div><div class="color-swatch-hex">#f2a918</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#f7b928"></div><div class="color-swatch-info"><div class="color-swatch-name">warning</div><div class="color-swatch-hex">#f7b928</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffe200"></div><div class="color-swatch-info"><div class="color-swatch-name">warning-bg</div><div class="color-swatch-hex">#ffe200</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#e41e3f"></div><div class="color-swatch-info"><div class="color-swatch-name">critical</div><div class="color-swatch-hex">#e41e3f</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#f0284a"></div><div class="color-swatch-info"><div class="color-swatch-name">critical-strong</div><div class="color-swatch-hex">#f0284a</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ffffff"></div><div class="color-swatch-info"><div class="color-swatch-name">canvas</div><div class="color-swatch-hex">#ffffff</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#f1f4f7"></div><div class="color-swatch-info"><div class="color-swatch-name">surface-soft</div><div class="color-swatch-hex">#f1f4f7</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#0a1317"></div><div class="color-swatch-info"><div class="color-swatch-name">ink-deep</div><div class="color-swatch-hex">#0a1317</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#1c1e21"></div><div class="color-swatch-info"><div class="color-swatch-name">ink</div><div class="color-swatch-hex">#1c1e21</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#444950"></div><div class="color-swatch-info"><div class="color-swatch-name">charcoal</div><div class="color-swatch-hex">#444950</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#4b4c4f"></div><div class="color-swatch-info"><div class="color-swatch-name">slate</div><div class="color-swatch-hex">#4b4c4f</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#5d6c7b"></div><div class="color-swatch-info"><div class="color-swatch-name">steel</div><div class="color-swatch-hex">#5d6c7b</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#8595a4"></div><div class="color-swatch-info"><div class="color-swatch-name">stone</div><div class="color-swatch-hex">#8595a4</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#ced0d4"></div><div class="color-swatch-info"><div class="color-swatch-name">hairline</div><div class="color-swatch-hex">#ced0d4</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#dee3e9"></div><div class="color-swatch-info"><div class="color-swatch-name">hairline-soft</div><div class="color-swatch-hex">#dee3e9</div></div></div>
+<div class="color-swatch"><div class="color-swatch-block" style="background:#bcc0c4"></div><div class="color-swatch-info"><div class="color-swatch-name">disabled-text</div><div class="color-swatch-hex">#bcc0c4</div></div></div></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="type">
+  <div class="section-label">Typography</div>
+  <h2 class="section-title">Scale (Inter stand-in)</h2>
+  <p style="font-size:28px;font-weight:600;margin-bottom:12px;">Display sample</p>
+  <p style="font-size:18px;font-weight:500;margin-bottom:8px;">Section heading</p>
+  <p style="color:var(--preview-muted);max-width:560px;">Body — tokens above drive backgrounds, borders, and accents; proprietary fonts from DESIGN.md load on the live brand.</p>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="buttons">
+  <div class="section-label">Buttons</div>
+  <h2 class="section-title">Actions</h2>
+  <div class="button-row">
+    <a class="btn-primary" href="#">Continue</a>
+    <a class="btn-secondary" href="#">Cancel</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="cards">
+  <div class="section-label">Cards</div>
+  <h2 class="section-title">Surfaces</h2>
+  <div class="card-grid">
+    <div class="card"><h3>Module A</h3><p>Surface uses semantic elevation from token roles.</p></div>
+    <div class="card"><h3>Module B</h3><p>Hairlines and muted copy reference DESIGN.md.</p></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="forms">
+  <div class="section-label">Forms</div>
+  <h2 class="section-title">Inputs</h2>
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input class="form-input" type="email" placeholder="you@example.com">
+  </div>
+</section>
+
+</body>
+</html>

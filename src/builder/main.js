@@ -4,10 +4,13 @@ import { extractVariables, groupVariables, applyVariableOverrides, inferType } f
 // ── All built-in design slugs for the base selector ───────────────────────────
 const BUILTIN = [
   ['AI & ML',            ['claude','cohere','elevenlabs','minimax','mistral.ai','ollama','opencode.ai','replicate','runwayml','together.ai','voltagent','x.ai']],
-  ['Dev Tools',          ['cursor','expo','linear.app','lovable','mintlify','posthog','raycast','resend','sentry','supabase','superhuman','vercel','warp','zapier']],
+  ['Dev Tools',          ['cursor','expo','linear.app','lovable','mintlify','posthog','raycast','resend','sentry','slack','supabase','superhuman','vercel','warp','zapier']],
   ['Infra',              ['clickhouse','composio','hashicorp','mongodb','sanity','stripe']],
   ['Design',             ['airtable','brandbuildr','cal','clay','figma','framer','intercom','miro','notion','pinterest','webflow']],
-  ['Fintech',            ['coinbase','kraken','revolut','wise']],
+  ['Fintech',            ['binance','coinbase','kraken','mastercard','revolut','wise']],
+  ['Retail',             ['meta','nike','shopify','starbucks']],
+  ['Automotive',         ['bmw-m','bugatti','ferrari','lamborghini','renault','tesla']],
+  ['Media',              ['playstation','theverge','vodafone','wired']],
   ['Enterprise',         ['airbnb','apple','bmw','ibm','nvidia','spacex','spotify','uber']],
 ]
 
