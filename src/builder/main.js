@@ -6,7 +6,7 @@ const BUILTIN = [
   ['AI & ML',            ['claude','cohere','elevenlabs','minimax','mistral.ai','ollama','opencode.ai','replicate','runwayml','together.ai','voltagent','x.ai']],
   ['Dev Tools',          ['cursor','expo','linear.app','lovable','mintlify','posthog','raycast','resend','sentry','supabase','superhuman','vercel','warp','zapier']],
   ['Infra',              ['clickhouse','composio','hashicorp','mongodb','sanity','stripe']],
-  ['Design',             ['airtable','cal','clay','figma','framer','intercom','miro','notion','pinterest','webflow']],
+  ['Design',             ['airtable','brandbuildr','cal','clay','figma','framer','intercom','miro','notion','pinterest','webflow']],
   ['Fintech',            ['coinbase','kraken','revolut','wise']],
   ['Enterprise',         ['airbnb','apple','bmw','ibm','nvidia','spacex','spotify','uber']],
 ]

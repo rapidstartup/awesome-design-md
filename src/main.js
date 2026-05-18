@@ -43,6 +43,7 @@ const CATEGORIES = {
   ],
   'Design': [
     { slug: 'airtable',    name: 'Airtable' },
+    { slug: 'brandbuildr', name: 'BrandBuildr' },
     { slug: 'cal',         name: 'Cal.com' },
     { slug: 'clay',        name: 'Clay' },
     { slug: 'figma',       name: 'Figma' },

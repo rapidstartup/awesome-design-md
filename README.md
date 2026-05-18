@@ -16,7 +16,7 @@
 <div align="center">
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-55-10b981?style=classic)
+![DESIGN.md Count](https://img.shields.io/badge/DESIGN.md%20count-56-10b981?style=classic)
 [![Last Update](https://img.shields.io/github/last-commit/VoltAgent/awesome-design-md?label=Last%20update&style=classic)](https://github.com/VoltAgent/awesome-design-md)
 [![Discord](https://img.shields.io/discord/1361559153780195478.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://s.voltagent.dev/discord)
 
@@ -125,6 +125,7 @@ Each site includes:
 ### Design & Productivity
 
 - [**Airtable**](https://github.com/VoltAgent/awesome-design-md/tree/main/design-md/airtable/) - Spreadsheet-database hybrid. Colorful, friendly, structured data aesthetic
+- [**BrandBuildr**](design-md/brandbuildr/) — Strategic brand-building SaaS. Restrained light surfaces, phase colours, dark slate session canvas *(local / fork only; not in [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) upstream)*
 - [**Cal.com**](https://github.com/VoltAgent/awesome-design-md/tree/main/design-md/cal/) - Open-source scheduling. Clean neutral UI, developer-oriented simplicity
 - [**Clay**](https://github.com/VoltAgent/awesome-design-md/tree/main/design-md/clay/) - Creative agency. Organic shapes, soft gradients, art-directed layout
 - [**Figma**](https://github.com/VoltAgent/awesome-design-md/tree/main/design-md/figma/) - Collaborative design tool. Vibrant multi-color, playful yet professional

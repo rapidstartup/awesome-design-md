@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design System Preview: BrandBuildr (Dark)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --text-primary: #0F172A;
+    --text-muted: #64748B;
+    --shell-bg: #020617;
+    --content-text-dark: #E2E8F0;
+    --content-bg-dark: #020617;
+    --content-text-light: #0F172A;
+    --content-bg-light: #F8FAFC;
+    --border-default: #E2E8F0;
+    --accent-indigo: #6366F1;
+    --accent-indigo-hover: #4F46E5;
+    --button-primary-bg: #4F46E5;
+    --button-primary-text: #FFFFFF;
+    --destructive-red: #DC2626;
+    --on-destructive: #FFFFFF;
+    --dark-slate: #1E293B;
+    --dark-slate-text: #F8FAFC;
+    --shell-sidebar-border: #1E293B;
+    --stage-bar-bg: #0F172A;
+    --stage-bar-border: #1E293B;
+    --phase-core: #10B981;
+    --phase-grow: #0EA5E9;
+    --phase-scale: #6366F1;
+    --phase-legacy: #8B5CF6;
+    --consensus-teal: #14B8A6;
+    --card-on-dark: rgba(255,255,255,0.04);
+    --border-slate-800: rgba(148, 163, 184, 0.2);
+    --content-max-width: 1200px;
+    --r-sm: 4px;
+    --r-md: 8px;
+    --r-lg: 12px;
+    --r-full: 9999px;
+    --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --font-serif: Georgia, 'Times New Roman', serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--content-bg-dark); color:var(--content-text-dark); font-family:var(--font-sans); font-size:14px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+
+  .nav { position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:14px 24px; background:var(--shell-bg); border-bottom:1px solid var(--shell-sidebar-border); }
+  .nav-brand { font-size:14px; font-weight:600; color:var(--content-text-dark); text-decoration:none; }
+  .nav-links { display:flex; flex-wrap:wrap; gap:14px; list-style:none; }
+  .nav-links a { font-size:13px; font-weight:500; color:#94A3B8; text-decoration:none; }
+  .nav-links a:hover { color:var(--accent-indigo); }
+  .nav-cta { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:#0F172A; border:1px solid var(--shell-sidebar-border); color:var(--content-text-dark); text-decoration:none; }
+
+  .hero { padding:32px 24px 40px; text-align:center; max-width:var(--content-max-width); margin:0 auto; }
+  .hero h1 { font-size:24px; font-weight:600; line-height:1.3; letter-spacing:-0.01em; margin-bottom:4px; }
+  .hero .subtitle { font-size:14px; line-height:1.5; color:#94A3B8; }
+  .hero p.lead { margin:14px auto 0; color:#94A3B8; max-width:52ch; font-size:14px; }
+  .hero-buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:20px; }
+  .btn-canvas { display:inline-block; background:#FFFFFF; color:var(--dark-slate); padding:12px 20px; border-radius:var(--r-md); font-size:14px; font-weight:500; text-decoration:none; }
+  .btn-primary { display:inline-block; background:var(--button-primary-bg); color:var(--button-primary-text); padding:12px 20px; border-radius:var(--r-md); font-size:14px; font-weight:500; text-decoration:none; }
+
+  .section { padding:40px 24px; max-width:var(--content-max-width); margin:0 auto; }
+  @media (min-width: 900px) { .section, .nav, .hero { padding-left: 48px; padding-right: 48px; } }
+  .section-label { font-size:11px; font-weight:500; line-height:1.2; color:#94A3B8; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
+  .section-title { font-size:18px; font-weight:600; line-height:1.4; margin-bottom:12px; color:var(--content-text-dark); }
+  .section-note { font-size:12px; color:#94A3B8; line-height:1.5; margin:-4px 0 14px; max-width:70ch; }
+  .section-divider { border:none; border-top:1px solid var(--shell-sidebar-border); margin:0; }
+
+  .color-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(130px,1fr)); gap:10px; margin-bottom:12px; }
+  .color-swatch { border-radius:12px; overflow:hidden; border:1px solid var(--shell-sidebar-border); }
+  .color-swatch-block { height:52px; }
+  .color-swatch-info { padding:8px; background:#0F172A; }
+  .color-swatch-name { font-size:10px; font-weight:600; color:var(--content-text-dark); }
+  .color-swatch-hex { font-size:8px; color:#94A3B8; font-family:var(--font-mono); }
+  .color-group-label { font-size:10px; font-weight:600; color:#94A3B8; text-transform:uppercase; letter-spacing:0.06em; margin:16px 0 8px; }
+
+  .type-sample { margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid var(--shell-sidebar-border); }
+  .type-meta { font-size:9px; color:#64748B; margin-top:4px; font-family:var(--font-mono); }
+
+  .pattern-stage { background:var(--stage-bar-bg); border:1px solid var(--stage-bar-border); border-radius:var(--r-md); padding:10px; max-width:520px; margin-bottom:16px; }
+  .pattern-stage__nodes { display:flex; gap:6px; margin-top:8px; }
+  .pattern-stage__node { width:10px; height:10px; border-radius:50%; background:#334155; }
+  .pattern-stage__node--active { background:var(--accent-indigo); box-shadow:0 0 0 2px rgba(99,102,241,0.35); }
+  .panel-consensus { border:1px solid rgba(20, 184, 166, 0.3); background:linear-gradient(180deg, rgba(20, 184, 166, 0.1) 0%, #0F172A 100%); border-radius:var(--r-md); padding:12px; max-width:380px; margin-bottom:16px; }
+  .panel-consensus__bar { height:3px; background:var(--consensus-teal); border-radius:2px; margin-bottom:8px; }
+  .panel-facil { border-left:3px solid var(--accent-indigo); padding:8px 12px; background:#0F172A; border-radius:0 var(--r-md) var(--r-md) 0; max-width:380px; font-size:14px; color:var(--content-text-dark); margin-bottom:16px; }
+
+  .card { background:var(--card-on-dark); border:1px solid var(--border-slate-800); border-radius:var(--r-md); overflow:hidden; }
+  .card-body { padding:14px; }
+  .card h3 { font-size:15px; font-weight:600; }
+  .card p { font-size:13px; color:#94A3B8; line-height:1.5; margin-top:4px; }
+
+  .phase-pill { display:inline-flex; padding:4px 10px; border-radius:var(--r-full); font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; border:1px solid; line-height:1.2; }
+  .phase-pill--core { color:var(--phase-core); border-color:var(--phase-core); }
+  .phase-pill--grow { color:var(--phase-grow); border-color:var(--phase-grow); }
+  .phase-pill--scale { color:var(--phase-scale); border-color:var(--phase-scale); }
+  .phase-pill--legacy { color:var(--phase-legacy); border-color:var(--phase-legacy); }
+
+  .slate-canvas { background:var(--dark-slate); color:var(--dark-slate-text); border-radius:var(--r-md); padding:20px; max-width:480px; border:1px solid #334155; }
+  .btn-slate { background:#FFF; color:var(--dark-slate); padding:12px 20px; border-radius:var(--r-md); font-size:14px; font-weight:500; text-decoration:none; display:inline-block; }
+
+  .spacing-row { display:flex; flex-wrap:wrap; gap:6px; align-items:flex-end; margin:10px 0; }
+  .spacing-block { background:var(--accent-indigo); height:20px; border-radius:2px; opacity:0.5; }
+  .elevation-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:8px; }
+  .elevation-card { background:#0F172A; border:1px solid var(--shell-sidebar-border); border-radius:var(--r-md); padding:12px; font-size:12px; text-align:center; color:#94A3B8; }
+
+  .footer { padding:18px; text-align:center; border-top:1px solid var(--shell-sidebar-border); font-size:12px; color:#64748B; }
+  @media (max-width:700px) { .nav-links { display:none; } }
+</style>
+</head>
+<body>
+<div style="position:fixed;top:12px;right:12px;z-index:200;background:var(--accent-indigo);color:#fff;font-size:9px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:0.04em">dark preview</div>
+
+<nav class="nav">
+  <a class="nav-brand" href="#">awesome-design-md</a>
+  <ul class="nav-links">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Type</a></li>
+    <li><a href="#slate">dark-canvas</a></li>
+    <li><a href="#patterns">Patterns</a></li>
+    <li><a href="#phases">Phases</a></li>
+  </ul>
+  <a class="nav-cta" href="#">◆</a>
+</nav>
+
+<section class="hero">
+  <h1>Design System Inspired by <span>BrandBuildr</span></h1>
+  <p class="subtitle">content-bg-dark + content-text-dark (optional main column)</p>
+  <p class="lead">Same YAML tokens as the light catalog: dark shell #020617, indigo primary, canonical phase colours, Build session &amp; dark-canvas for transitions.</p>
+  <div class="hero-buttons">
+    <a class="btn-primary" href="#">button-primary</a>
+    <a class="btn-canvas" href="#">dark-canvas-button</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="colors">
+  <div class="section-label">01 / Colors</div>
+  <h2 class="section-title">Shell + dark content</h2>
+  <p class="section-note">content-bg-dark #020617 · content-text-dark #E2E8F0. Phase hexes match light (canonical targets).</p>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#020617"></div><div class="color-swatch-info"><div class="color-swatch-name">shell-bg / content-bg-dark</div><div class="color-swatch-hex">#020617</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#E2E8F0"></div><div class="color-swatch-info"><div class="color-swatch-name">content-text-dark</div><div class="color-swatch-hex">#E2E8F0</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#4F46E5"></div><div class="color-swatch-info"><div class="color-swatch-name">button-primary-bg</div><div class="color-swatch-hex">#4F46E5</div></div></div>
+  </div>
+  <div class="color-group-label">Phase (same as light)</div>
+  <div class="color-grid">
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#10B981"></div><div class="color-swatch-info"><div class="color-swatch-name">phase-core</div><div class="color-swatch-hex">#10B981</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#0EA5E9"></div><div class="color-swatch-info"><div class="color-swatch-name">phase-grow</div><div class="color-swatch-hex">#0EA5E9</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#6366F1"></div><div class="color-swatch-info"><div class="color-swatch-name">phase-scale</div><div class="color-swatch-hex">#6366F1</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#8B5CF6"></div><div class="color-swatch-info"><div class="color-swatch-name">phase-legacy</div><div class="color-swatch-hex">#8B5CF6</div></div></div>
+    <div class="color-swatch"><div class="color-swatch-block" style="background:#14B8A6"></div><div class="color-swatch-info"><div class="color-swatch-name">consensus-teal</div><div class="color-swatch-hex">#14B8A6</div></div></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="typography">
+  <div class="section-label">02 / Typography</div>
+  <h2 class="section-title">Same scale on dark surfaces</h2>
+  <div class="type-sample"><div style="font-size:24px;font-weight:600;line-height:1.3;letter-spacing:-0.01em">Page title (h1)</div><div class="type-meta">h1 24/600/1.3</div></div>
+  <div class="type-sample"><div style="font-size:14px;font-weight:400;line-height:1.6">body-md on dark content</div><div class="type-meta">14 / 400 / 1.6</div></div>
+  <div class="type-sample"><div class="type-meta" style="font-size:12px; font-weight:700; font-family:var(--font-mono)">STAGE_02</div><div class="type-meta">mono-label / StageIndicator</div></div>
+  <div class="type-sample"><div style="font-size:32px; font-weight:600; line-height:1.2; font-family:var(--font-serif); color: var(--content-text-dark)">Export title (Georgia)</div><div class="type-meta">export-serif-h1</div></div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="slate">
+  <div class="section-label">03 / dark-canvas (YAML)</div>
+  <h2 class="section-title">dark-slate · dark-canvas-button</h2>
+  <p class="section-note">backgroundColor <code>dark-slate</code> #1E293B · text <code>dark-slate-text</code> #F8FAFC. Button: #FFF fill, <code>textColor</code> #1E293B (dark-canvas-button).</p>
+  <div class="slate-canvas">
+    <p style="margin-bottom:12px; font-size:14px; line-height:1.5">Session / transition surface (not main shell).</p>
+    <a class="btn-slate" href="#">white · indigo-950 text</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="patterns">
+  <div class="section-label">04 / Patterns</div>
+  <h2 class="section-title">stage · consensus · facilitator</h2>
+  <div class="pattern-stage">
+    <div class="section-label" style="color:#94A3B8; margin-bottom:4px">Stage indicator</div>
+    <div style="font-family:var(--font-mono); font-size:12px; font-weight:700; color:#94A3B8">NAV_02</div>
+    <div class="pattern-stage__nodes"><div class="pattern-stage__node"></div><div class="pattern-stage__node pattern-stage__node--active"></div><div class="pattern-stage__node"></div></div>
+  </div>
+  <div class="panel-consensus">
+    <div class="panel-consensus__bar"></div>
+    <div class="section-label" style="color:var(--consensus-teal)">board-consensus-panel</div>
+  </div>
+  <div class="panel-facil">facilitator-message — border accent indigo</div>
+  <p class="type-meta" style="margin-top:8px">Build session split: slate-950 / slate-900 panels (DESIGN.md Elevation &amp; Depth).</p>
+</section>
+
+<hr class="section-divider">
+
+<section class="section" id="phases">
+  <div class="section-label">05 / Phases &amp; cards</div>
+  <h2 class="section-title">Phase pills + tonal card</h2>
+  <p style="margin-bottom:10px">
+    <span class="phase-pill phase-pill--core">Core</span>
+    <span class="phase-pill phase-pill--grow">Grow</span>
+    <span class="phase-pill phase-pill--scale">Scale</span>
+    <span class="phase-pill phase-pill--legacy">Legacy</span>
+  </p>
+  <div class="card" style="max-width:320px">
+    <div class="card-body"><h3>Brand row</h3><p>Figure–ground on dark; borders slate-800 family.</p></div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<section class="section">
+  <div class="section-label">06 / Spacing &amp; depth</div>
+  <h2 class="section-title">Same spacing · overlay elevation</h2>
+  <div class="spacing-row">
+    <div style="text-align:center"><div class="spacing-block" style="width:4px"></div><span class="type-meta" style="display:block">4 xs</span></div>
+    <div style="text-align:center"><div class="spacing-block" style="width:24px"></div><span class="type-meta" style="display:block">24 lg</span></div>
+    <div style="text-align:center"><div class="spacing-block" style="width:48px"></div><span class="type-meta" style="display:block">48 xxl</span></div>
+  </div>
+  <div class="elevation-grid" style="margin-top:16px">
+    <div class="elevation-card" style="box-shadow:0 25px 50px -12px rgba(0,0,0,0.5)">shadow-2xl (modals / AI panel)</div>
+    <div class="elevation-card">Tonal panel #0F172A</div>
+  </div>
+</section>
+
+<footer class="footer">Generated from BrandBuildr DESIGN.md — awesome-design-md</footer>
+
+</body>
+</html>
